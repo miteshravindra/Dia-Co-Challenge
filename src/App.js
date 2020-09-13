@@ -1,26 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import axios from "axios";
+import "./App.css";
+import SearchBar from "./components/SearchBar";
+import SearchResults from "./components/SearchResults";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    newsArticles: [],
+    articleFilter: "",
+  };
+  componentDidMount = () => {
+    axios({
+      method: "GET",
+      url:
+        "http://newsapi.org/v2/top-headlines?" +
+        "country=us&" +
+        "apiKey=15dc83448e474572a8b002056492d4c7",
+    }).then(({ data }) => {
+      this.setState({
+        ...this.state,
+        newsArticles: this.state.newsArticles.concat(data.articles),
+      });
+    });
+  };
+  render() {
+    return (
+      <div className="App">
+        <SearchBar />
+        <SearchResults newsArticles={this.state.newsArticles} />
+      </div>
+    );
+  }
 }
 
 export default App;

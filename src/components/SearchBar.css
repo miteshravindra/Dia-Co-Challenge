@@ -1,0 +1,36 @@
+.inputSearchBar {
+  width: 60% !important;
+  background-color: #313131;
+  color: white;
+  border: 0px;
+}
+
+.formContainer {
+  width: 100%;
+}
+
+.navDropdown {
+  width: 20%;
+  background-color: #313131;
+  color: white;
+  margin: 0 2rem;
+  border-radius: 0.2rem;
+}
+
+.navDropdownContent {
+  width: 100%;
+  color: white;
+}
+
+.navDropdownItem {
+  width: 100%;
+  color: white;
+}
+
+.navButton {
+  width: 10%;
+}
+
+.navBar {
+  background-color: #454545;
+}
