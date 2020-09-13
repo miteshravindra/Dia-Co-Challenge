@@ -4,6 +4,7 @@ import "./App.css";
 import SearchBar from "./components/SearchBar";
 import SearchResults from "./components/SearchResults";
 import Spinner from "react-bootstrap/Spinner";
+import API from "../src/constant/api";
 
 class App extends React.Component {
   state = {
@@ -15,48 +16,38 @@ class App extends React.Component {
   onSubmitHandler = (event) => {
     event.preventDefault();
     if (event.target[0].value.length > 0) {
-      this.setState({ ...this.state, loading: true });
-      axios({
-        method: "GET",
-        url: `https://newsapi.org/v2/everything?q=${event.target[0].value}&apiKey=15dc83448e474572a8b002056492d4c7`,
-      }).then(({ data }) => {
-        this.setState({
-          ...this.state,
-          loading: false,
-          newsArticles: [...data.articles],
+      if (event.target[1].value === "Sort Articles") {
+        this.setState({ ...this.state, loading: true });
+        axios({
+          method: "GET",
+          url: `${API.url}?q=${event.target[0].value}&apiKey=${API.key}`,
+        }).then(({ data }) => {
+          this.setState({
+            ...this.state,
+            loading: false,
+            newsArticles: [...data.articles],
+          });
         });
-      });
-    }
-  };
-
-  onChangeHandler = (event) => {
-    console.dir(event.target);
-    if (
-      event.target.value !== "Sort Articles" &&
-      event.target.tagName === "SELECT" &&
-      event.target.previousElementSibling.value.length > 0
-    ) {
-      this.setState({ ...this.state, loading: true });
-      axios({
-        method: "GET",
-        url: `https://newsapi.org/v2/everything?q=${event.target.previousElementSibling.value}&sortBy=${event.target.value}&apiKey=15dc83448e474572a8b002056492d4c7`,
-      }).then(({ data }) => {
-        this.setState({
-          ...this.state,
-          loading: false,
-          newsArticles: [...data.articles],
+      } else {
+        this.setState({ ...this.state, loading: true });
+        axios({
+          method: "GET",
+          url: `${API.url}?q=${event.target[0].value}&sortBy=${event.target[1].value}&apiKey=${API.key}`,
+        }).then(({ data }) => {
+          this.setState({
+            ...this.state,
+            loading: false,
+            newsArticles: [...data.articles],
+          });
         });
-      });
+      }
     }
   };
 
   render() {
     return (
       <div className="App">
-        <SearchBar
-          onSubmitHandler={this.onSubmitHandler}
-          onChangeHandler={this.onChangeHandler}
-        />
+        <SearchBar onSubmitHandler={this.onSubmitHandler} />
         {this.state.loading ? (
           <div className="spinnerContainer">
             <Spinner animation="grow" variant="dark" />

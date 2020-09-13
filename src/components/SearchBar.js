@@ -3,18 +3,13 @@ import { Navbar, Form, FormControl, Button } from "react-bootstrap";
 
 import "./SearchBar.css";
 
-export default function SearchBar({ onSubmitHandler, onChangeHandler }) {
+export default function SearchBar({ onSubmitHandler }) {
   return (
     <div>
       <Navbar expand="lg" className="navBar">
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Form
-            inline
-            className="formContainer"
-            onChange={onChangeHandler}
-            onSubmit={onSubmitHandler}
-          >
+          <Form inline className="formContainer" onSubmit={onSubmitHandler}>
             <FormControl
               type="text"
               className="inputSearchBar"

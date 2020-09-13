@@ -1,8 +1,9 @@
 .inputSearchBar {
-  width: 60% !important;
   background-color: #313131;
   color: white;
   border: 0px;
+  width: 100%;
+  margin: 0.5rem;
 }
 
 .formContainer {
@@ -14,13 +15,43 @@
 }
 
 .selectContainer {
-  width: 25% !important;
+  width: 100%;
+  margin: 0.5rem;
   background-color: #313131;
   color: white;
   border: 0px;
-  margin: 0px 1rem;
 }
 
 .navButton {
-  width: 10%;
+  width: 100%;
+  margin: 0.5rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .inputSearchBar {
+    width: 60% !important;
+    background-color: #313131;
+    color: white;
+    border: 0px;
+  }
+
+  .formContainer {
+    width: 100%;
+  }
+
+  .navBar {
+    background-color: #454545;
+  }
+
+  .selectContainer {
+    width: 25% !important;
+    background-color: #313131;
+    color: white;
+    border: 0px;
+    margin: 0px 1rem;
+  }
+
+  .navButton {
+    width: 10%;
+  }
 }
