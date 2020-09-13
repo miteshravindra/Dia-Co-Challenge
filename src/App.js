@@ -13,6 +13,7 @@ class App extends React.Component {
   };
 
   onSubmitHandler = (event) => {
+    event.preventDefault();
     if (event.target[0].value.length > 0) {
       this.setState({ ...this.state, loading: true });
       axios({

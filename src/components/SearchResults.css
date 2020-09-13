@@ -1,0 +1,7 @@
+.searchResultContainer {
+  padding: 2%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: space-evenly;
+}

@@ -20,17 +20,17 @@ export default function SearchBar({ onSubmitHandler, onChangeHandler }) {
               className="inputSearchBar"
               placeholder="Some search term"
             />
-            <Form.Control as="select" placeholder="Sort By">
+            <Form.Control
+              as="select"
+              placeholder="Sort By"
+              className="selectContainer"
+            >
               <option>Sort Articles</option>
               <option value="publishedAt">Date</option>
               <option value="relevancy">Relevancy</option>
               <option value="popularity">Popularity</option>
             </Form.Control>
-            <Button
-              variant="outline-success"
-              className="navButton"
-              type="submit"
-            >
+            <Button variant="danger" type="submit" className="navButton">
               Search
             </Button>
           </Form>

@@ -12,3 +12,15 @@
 .navBar {
   background-color: #454545;
 }
+
+.selectContainer {
+  width: 25% !important;
+  background-color: #313131;
+  color: white;
+  border: 0px;
+  margin: 0px 1rem;
+}
+
+.navButton {
+  width: 10%;
+}
