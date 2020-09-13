@@ -9,24 +9,45 @@ class App extends React.Component {
     newsArticles: [],
     articleFilter: "",
   };
-  componentDidMount = () => {
-    axios({
-      method: "GET",
-      url:
-        "http://newsapi.org/v2/top-headlines?" +
-        "country=us&" +
-        "apiKey=15dc83448e474572a8b002056492d4c7",
-    }).then(({ data }) => {
-      this.setState({
-        ...this.state,
-        newsArticles: this.state.newsArticles.concat(data.articles),
+
+  onSubmitHandler = (event) => {
+    if (event.target[0].value.length > 0) {
+      axios({
+        method: "GET",
+        url: `https://newsapi.org/v2/everything?q=${event.target[0].value}&apiKey=15dc83448e474572a8b002056492d4c7`,
+      }).then(({ data }) => {
+        this.setState({
+          ...this.state,
+          newsArticles: [...data.articles],
+        });
       });
-    });
+    }
   };
+
+  onChangeHandler = (event) => {
+    if (
+      event.target.value !== "Sort Articles" &&
+      event.target.tagName === "SELECT"
+    ) {
+      axios({
+        method: "GET",
+        url: `https://newsapi.org/v2/everything?q=${event.target[0].value}&sortBy=${event.target.value}&apiKey=15dc83448e474572a8b002056492d4c7`,
+      }).then(({ data }) => {
+        this.setState({
+          ...this.state,
+          newsArticles: [...data.articles],
+        });
+      });
+    }
+  };
+
   render() {
     return (
       <div className="App">
-        <SearchBar />
+        <SearchBar
+          onSubmitHandler={this.onSubmitHandler}
+          onChangeHandler={this.onChangeHandler}
+        />
         <SearchResults newsArticles={this.state.newsArticles} />
       </div>
     );

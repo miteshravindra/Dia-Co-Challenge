@@ -3,9 +3,7 @@ import NewsCard from "./NewsCard";
 
 export default function SearchResults({ newsArticles }) {
   console.log(newsArticles);
-  return newsArticles.length <= 0 ? (
-    "...loading spinner"
-  ) : (
+  return (
     <>
       {newsArticles.map((article) => (
         <NewsCard article={article} />
