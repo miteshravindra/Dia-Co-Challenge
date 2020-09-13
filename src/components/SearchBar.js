@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Navbar,
-  Nav,
-  NavDropdown,
-  Form,
-  FormControl,
-  Button,
-} from "react-bootstrap";
+import { Navbar, Form, FormControl, Button } from "react-bootstrap";
 
 import "./SearchBar.css";
 

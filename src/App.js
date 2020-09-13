@@ -29,14 +29,16 @@ class App extends React.Component {
   };
 
   onChangeHandler = (event) => {
+    console.dir(event.target);
     if (
       event.target.value !== "Sort Articles" &&
-      event.target.tagName === "SELECT"
+      event.target.tagName === "SELECT" &&
+      event.target.previousElementSibling.value.length > 0
     ) {
       this.setState({ ...this.state, loading: true });
       axios({
         method: "GET",
-        url: `https://newsapi.org/v2/everything?q=${event.target[0].value}&sortBy=${event.target.value}&apiKey=15dc83448e474572a8b002056492d4c7`,
+        url: `https://newsapi.org/v2/everything?q=${event.target.previousElementSibling.value}&sortBy=${event.target.value}&apiKey=15dc83448e474572a8b002056492d4c7`,
       }).then(({ data }) => {
         this.setState({
           ...this.state,
@@ -55,7 +57,7 @@ class App extends React.Component {
           onChangeHandler={this.onChangeHandler}
         />
         {this.state.loading ? (
-          <>
+          <div className="spinnerContainer">
             <Spinner animation="grow" variant="dark" />
             <Spinner animation="grow" variant="dark" />
             <Spinner animation="grow" variant="dark" />
@@ -64,7 +66,7 @@ class App extends React.Component {
             <Spinner animation="grow" variant="dark" />
             <Spinner animation="grow" variant="dark" />
             <Spinner animation="grow" variant="dark" />
-          </>
+          </div>
         ) : (
           <SearchResults newsArticles={this.state.newsArticles} />
         )}

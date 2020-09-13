@@ -2,8 +2,6 @@ import React from "react";
 import { Card, Button } from "react-bootstrap";
 
 export default function NewsCard({ article }) {
-  console.log("article inside card component");
-  console.log(article);
   return (
     <div>
       <Card style={{ width: "45%" }}>
