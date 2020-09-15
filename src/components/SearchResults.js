@@ -1,6 +1,5 @@
 import React from "react";
 import NewsCard from "./NewsCard";
-import Container from "react-bootstrap/Container";
 import "./SearchResults.css";
 
 export default function SearchResults({ newsArticles }) {

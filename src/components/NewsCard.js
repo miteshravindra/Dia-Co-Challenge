@@ -1,62 +1,32 @@
 import React from "react";
 import { Card, Button } from "react-bootstrap";
 import moment from "moment";
-
-const newsCardContainer = {
-  boxSizing: "borderBox",
-  height: "650px",
-  flex: "1 40%",
-  margin: "1rem",
-};
-
-const newsCard = {
-  height: "100%",
-};
-
-const cardImageContainer = {
-  height: "50%",
-};
-
-const cardImage = {
-  height: "100%",
-};
-
-const cardDesciption = {
-  height: "50%",
-};
-
-const cardAction = {
-  height: "50%",
-};
-
-const cardButton = {
-  marginTop: "10%",
-};
+import styles from "./NewsCard.module.css";
 
 export default function NewsCard({ article }) {
   return (
-    <div style={newsCardContainer}>
-      <Card style={newsCard}>
-        <div style={cardImageContainer}>
+    <div className={styles.newsCardContainer}>
+      <Card className={styles.newsCard}>
+        <div className={styles.cardImageContainer}>
           <Card.Img
             variant="top"
             src={article.urlToImage}
             alt="No Image"
-            style={cardImage}
+            className={styles.cardImage}
           />
         </div>
         <Card.Body>
-          <div style={cardDesciption}>
+          <div className={styles.cardDesciption}>
             <Card.Title>{article.title}</Card.Title>
-            <Card.Text>
+            <Card.Text className={styles.cardText}>
               {article.description !== null
                 ? `${article.description.slice(0, 150)}....`
                 : article.description}
             </Card.Text>
           </div>
-          <div style={cardAction}>
-            <a href={article.url}>
-              <Button variant="primary" style={cardButton}>
+          <div className={styles.cardAction}>
+            <a href={article.url} target="_blank">
+              <Button variant="primary" className={styles.cardButton}>
                 Read More
               </Button>
             </a>

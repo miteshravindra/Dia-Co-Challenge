@@ -1,0 +1,45 @@
+.newsCardContainer {
+  box-sizing: border-box;
+  flex: 1 40%;
+  margin: 1rem;
+  height: 500px;
+}
+
+.newsCard {
+  height: 100%;
+}
+
+.cardText {
+  display: none;
+}
+
+.cardImageContainer {
+  height: 50%;
+}
+
+.cardImage {
+  height: 100%;
+}
+
+.cardDesciption {
+  height: 50%;
+}
+
+.cardAction {
+  height: 50%;
+}
+
+.cardButton {
+  margin-top: 10%;
+  background-color: #313131;
+  border: none;
+}
+
+@media only screen and (min-width: 760px) {
+  .newsCardContainer {
+    height: 650px;
+  }
+  .cardText {
+    display: block;
+  }
+}
