@@ -1,11 +1,11 @@
 import React from "react";
-import "./NewsCard.css";
 import { Card, Button } from "react-bootstrap";
 import moment from "moment";
 
 const newsCardContainer = {
   boxSizing: "borderBox",
-  flex: "1 0 40%",
+  height: "650px",
+  flex: "1 40%",
   margin: "1rem",
 };
 
@@ -13,8 +13,12 @@ const newsCard = {
   height: "100%",
 };
 
-const cardImage = {
+const cardImageContainer = {
   height: "50%",
+};
+
+const cardImage = {
+  height: "100%",
 };
 
 const cardDesciption = {
@@ -22,30 +26,39 @@ const cardDesciption = {
 };
 
 const cardAction = {
-  display: "flex",
   height: "50%",
-  justifyContent: "center",
-  alignItems: "center",
+};
+
+const cardButton = {
+  marginTop: "10%",
 };
 
 export default function NewsCard({ article }) {
   return (
     <div style={newsCardContainer}>
       <Card style={newsCard}>
-        <Card.Img
-          variant="top"
-          src={article.urlToImage}
-          style={cardImage}
-          alt="No Image"
-        />
+        <div style={cardImageContainer}>
+          <Card.Img
+            variant="top"
+            src={article.urlToImage}
+            alt="No Image"
+            style={cardImage}
+          />
+        </div>
         <Card.Body>
           <div style={cardDesciption}>
             <Card.Title>{article.title}</Card.Title>
-            <Card.Text>{article.description}</Card.Text>
+            <Card.Text>
+              {article.description !== null
+                ? `${article.description.slice(0, 150)}....`
+                : article.description}
+            </Card.Text>
           </div>
           <div style={cardAction}>
             <a href={article.url}>
-              <Button variant="primary">Read More</Button>
+              <Button variant="primary" style={cardButton}>
+                Read More
+              </Button>
             </a>
           </div>
         </Card.Body>

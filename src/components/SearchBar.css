@@ -2,12 +2,13 @@
   background-color: #313131;
   color: white;
   border: 0px;
-  width: 100%;
+  width: 100% !important;
   margin: 0.5rem;
 }
 
 .formContainer {
   width: 100%;
+  flex-flow: wrap;
 }
 
 .navBar {
@@ -15,7 +16,7 @@
 }
 
 .selectContainer {
-  width: 100%;
+  width: 100% !important;
   margin: 0.5rem;
   background-color: #313131;
   color: white;
@@ -27,16 +28,18 @@
   margin: 0.5rem;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 900px) {
   .inputSearchBar {
     width: 60% !important;
     background-color: #313131;
     color: white;
     border: 0px;
+    box-sizing: border-box;
   }
 
   .formContainer {
     width: 100%;
+    flex-flow: nowrap;
   }
 
   .navBar {
@@ -49,9 +52,11 @@
     color: white;
     border: 0px;
     margin: 0px 1rem;
+    box-sizing: border-box;
   }
 
   .navButton {
     width: 10%;
+    box-sizing: border-box;
   }
 }
