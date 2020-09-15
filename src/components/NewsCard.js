@@ -8,12 +8,14 @@ export default function NewsCard({ article }) {
     <div className={styles.newsCardContainer}>
       <Card className={styles.newsCard}>
         <div className={styles.cardImageContainer}>
-          <Card.Img
-            variant="top"
-            src={article.urlToImage}
-            alt="No Image"
-            className={styles.cardImage}
-          />
+          <a href={article.url} target="_blank">
+            <Card.Img
+              variant="top"
+              src={article.urlToImage}
+              alt="No Image"
+              className={styles.cardImage}
+            />
+          </a>
         </div>
         <Card.Body>
           <div className={styles.cardDesciption}>
@@ -26,7 +28,7 @@ export default function NewsCard({ article }) {
           </div>
           <div className={styles.cardAction}>
             <a href={article.url} target="_blank">
-              <Button variant="primary" className={styles.cardButton}>
+              <Button variant="dark" className={styles.cardButton}>
                 Read More
               </Button>
             </a>
